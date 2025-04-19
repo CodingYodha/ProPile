@@ -1,0 +1,241 @@
+:root {
+    --dark-void: #151419;
+    --liquid-lava: #F56E0F;
+    --gluon-grey: #1B1B1E;
+    --slate-grey: #262626;
+    --dusty-grey: #878787;
+    --snow: #FBFBFB;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--dark-void);
+    color: var(--snow);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.welcome-content {
+    text-align: center;
+    max-width: 600px;
+    padding: 0 20px;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards 0.5s;
+}
+
+.logo-container {
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.logo-text {
+    font-size: 7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--snow);
+    margin-bottom: 10px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.logo-underline {
+    height: 6px;
+    width: 0;
+    background-color: var(--liquid-lava);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    animation: expandWidth 1.5s ease-out forwards 1s;
+}
+
+.tagline {
+    font-size: 1.5rem;
+    color: var(--dusty-grey);
+    margin-bottom: 50px;
+    font-weight: 300;
+}
+
+.get-started-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: var(--liquid-lava);
+    color: var(--snow);
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--liquid-lava);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.get-started-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.get-started-btn:hover::before {
+    width: 100%;
+}
+
+.get-started-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(245, 110, 15, 0.3);
+}
+
+.get-started-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 10px rgba(245, 110, 15, 0.2);
+}
+
+.background-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+}
+
+.circle-1 {
+    width: 600px;
+    height: 600px;
+    background-color: var(--liquid-lava);
+    top: -200px;
+    right: -100px;
+    animation: float 15s infinite alternate ease-in-out;
+}
+
+.circle-2 {
+    width: 400px;
+    height: 400px;
+    background-color: var(--liquid-lava);
+    bottom: -150px;
+    left: -150px;
+    animation: float 20s infinite alternate-reverse ease-in-out;
+}
+
+.circle-3 {
+    width: 200px;
+    height: 200px;
+    background-color: var(--liquid-lava);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 10s infinite alternate ease-in-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+    }
+    to {
+        width: 60%;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+    100% {
+        transform: translateY(20px) rotate(-5deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.1;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo-text {
+        font-size: 4rem;
+    }
+    
+    .tagline {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+    }
+    
+    .get-started-btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+    
+    .circle-1 {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .circle-2 {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .circle-3 {
+        width: 100px;
+        height: 100px;
+    }
+}
